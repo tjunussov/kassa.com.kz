@@ -1,0 +1,94 @@
+<template lang="pug">
+  pre
+    center
+      | {{group.kassa.legal.name}}
+      |БИН\ИИН {{group.kassa.legal.bin}}
+      |ЧЕК {{no}}
+      |--------------------------------------
+      |20.10.2017 12:00
+    | Документ №12                   
+    | --------------------------------------
+    |              Смена №1 
+    | Продажи:
+    | Кассир №1                  Иванов И.И.
+    |
+    template(v-if="list")
+      template(v-for="(i, index) in list")
+        | {{ i.item.amount | moneyz | lpad(i.item.name)}}{{'\n'}}
+        template(v-if="i.item.count && i.item.count > 1")     {{i.item.count}} x {{i.item.price | moneyz}} {{'\n'}}
+        template(v-if="i.item.discount")     Скидка {{i.item.discount}} % {{'\n'}}
+    |
+    template(v-if="listPayments")
+      |
+      | Оплата:
+      |
+      template(v-for="(i, index) in listPayments" v-if=" i.item.amount > 0")
+        | {{ i.item.amount | moneyz | lpad(i.item.name)}}{{'\n'}}
+      template(v-if="excess!=0")
+        | {{ excess | moneyz | lpad(excess &gt; 0?'Сдача':'Недоимка')}}{{'\n'}}
+    |
+    | {{ total | moneyz | lpad('Итог')}}{{'\n'}}
+    |
+    center(v-if="app.fiscal")
+      | -----------------------------------
+      | ФИСКАЛЬНЫЙ ЧЕК
+      |
+      | Дата 00:27
+      | ОФД - АО КАЗАХТЕЛЕКОМ
+      | Фиск.признка 199189 ( автономный )
+      | Код ККМ КГД: 6202000148345
+      | Для проверки чека зайдите на сайт
+      | http://ofd.check.kz
+      | ИНK: {{app.fiscal.ink}} 
+      | РНK: {{app.fiscal.rnk}} 
+      | ЗНК: {{app.fiscal.znk}} 
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'check',
+  props:['no','list','listPayments','total','payTotal','excess'],
+  computed: {
+    ...mapGetters({
+        group: 'getGroupSelected',
+        config: 'getConfigSelected',
+    })
+  },
+  data () {
+    return {
+      selectedFilter:null,
+      app:{
+        fiscal:{
+          ink:655855115287,
+          rnk:655855115287,
+          znk:"SWK00031019"
+        }
+      }
+    }
+  },
+  mounted(){
+    
+  },
+  components:{
+    
+  },
+  methods:{
+    folderList(){
+     
+    },
+  }
+}
+</script>
+
+<style lang="stylus">
+pre 
+  padding 2rem 1rem
+  margin 0
+  font-size 0.8rem
+  display inline-block
+  font-family 'Consolas'
+  border 1px solid #ccc
+  
+</style>

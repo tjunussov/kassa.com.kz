@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Cons';
+    src: 
+        /*url('subset-Consolas-Bold.woff2') format('woff2'),*/
+        /*url('subset-Consolas-Bold.woff') format('woff'),*/
+        url('Consolas-Bold.woff') format('woff'),
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cons';
+    src: 
+        /*url('subset-Consolas.woff2') format('woff2'),*/
+        /*url('subset-Consolas.woff') format('woff'),*/
+        url('Consolas.woff') format('woff'),
+    font-weight: normal;
+    font-style: normal;
+}
+1

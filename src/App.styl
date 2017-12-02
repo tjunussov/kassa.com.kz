@@ -1,0 +1,166 @@
+
+.card 
+  h5 
+    margin-bottom 0
+    
+.light-border
+  border-color rgba(0,0,0,.1)
+  
+.form-control.fake
+  background-color transparent
+  border-color  transparent
+  padding-left 0
+  
+  h5
+    line-height 1
+
+
+// .list-group-flush:last-child .list-group-item:last-child:not(.more)
+//   border-bottom 1px solid rgba(0,0,0,.125)
+  
+.card-header
+  + .card-footer
+    border-top: none
+  
+  .btn-link.mixPay
+    margin -1rem
+    padding 1rem .75rem
+    
+.card .list-group-item
+  // background-color transparent
+  border-left 1px solid transparent
+  + .collapse
+    margin-top 1px
+    
+
+  
+// .card .list-group-item.active
+//   background-color rgba(0,123,255,0.2)
+//   color rgba(0,123,255,1)
+    
+
+.total-button button:disabled
+   background-color rgba(0,0,0,.03)
+   border-color transparent
+   color #777
+
+.total-button > button
+   padding-top 0.75rem
+   padding-bottom 0.75rem
+   border-top-right-radius 0
+   border-top-left-radius 0
+
+.total-button > button:first-child
+  display block
+  padding-right 0
+  padding-left 2rem
+  width 100%
+  
+
+.check
+  font-size 0.8rem
+  display inline-block
+  padding 1rem 0 
+  margin-bottom 2rem
+  
+  box-shadow: 0 15px 15px rgba(0,0,0,0.2);
+  position: relative;
+  background: #fff;
+  
+  .graph
+    line-height 0.9rem
+  
+  pre 
+    font-family 'Cons','Menlo', monospace !important
+    padding 1rem
+    margin 0
+    
+    &.pending
+      -webkit-animation: 0.5s blink step-end infinite;
+      
+    &.success
+      -webkit-animation: 1s appear linear;
+    
+  pre.fiscal
+    background-color rgba(0,123,255,0.1)
+    
+    
+  /* torn edges */
+/*.check:after,*/ 
+.check:before {
+    content: "";
+    display: block;
+    position: absolute;
+    
+    left:0;
+    right:0;
+    height: 5px;
+    z-index: 10;
+    /* TODO Add browser prefixes */
+    /*background: linear-gradient(-45deg, #f7f7f7 16px, transparent 0), linear-gradient(45deg, #f7f7f7 16px, transparent 0);*/
+    background:
+    linear-gradient(
+      45deg, transparent 33.333%,
+      #fff 33.333%, #fff 66.667%,
+      transparent 66.667%
+    ),
+    linear-gradient(
+      -45deg, transparent 33.333%,
+      #fff 33.333%, #fff 66.667%,
+      transparent 66.667%
+    );
+    background-size: 5px 10px;
+    background-position: 0 -5px;
+}
+/*
+.check:after {
+    top: -10px;
+    transform:rotate(180deg);
+}*/
+
+.check:before {
+    bottom: -5px;
+}
+
+.check dw, .check .dw { /*DOUBLE WIDTH emulation */
+    transform:scaleX(2);
+    transform-origin: top left;
+    
+    /*outline: 1px solid #00f;*/
+}
+.check right dw { /*DOUBLE WIDTH emulation */
+    transform-origin: top right;
+}
+.check center dw { /*DOUBLE WIDTH emulation */
+    transform-origin: top center;
+}
+.check dh,.check .dh  { /*DOUBLE HEIGHT emulation */
+    transform:scaleY(2);
+    display: block;
+    /*line-height: 80%;*/
+    /*outline: 1px solid #f00;*/
+}
+
+.check right {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+  /*outline: 5px dotted #0f0;*/
+}
+
+.check center {
+  // display: inline-block;
+  text-align: center;
+  // width: 100%;
+  /*outline: 1px dotted #f00;*/
+}
+
+.check barcode:after {
+      display: block;
+    line-height: 50px;
+      font-size: 50px;
+      color: #000;
+      content: attr(value);
+      font-family: 'Code39';
+  }
+  
