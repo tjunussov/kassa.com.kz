@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Cons';
+    src: url('Cons-Bold.woff2') format('woff2'),
+        url('Cons-Bold.woff') format('woff'),
+        url('Cons-Bold.svg#Consolas-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cons';
+    src: url('Cons.woff2') format('woff2'),
+        url('Cons.woff') format('woff'),
+        url('Cons.svg#Consolas') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
