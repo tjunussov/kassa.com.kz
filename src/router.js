@@ -57,6 +57,7 @@ import Profile from '@/components/utils/Profile'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'hash',
   routes: [
     {
       path: '/login',
