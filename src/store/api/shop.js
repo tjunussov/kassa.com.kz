@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { $fauth } from '@/store/api/firebase'
+// import { $fauth } from '@/store/api/firebase'
 
 /*************************************/
 
@@ -35,32 +35,37 @@ export default {
     });
   },
   auth(username){
-    return axios.post('https://auth.kassa.com.kz',username,{
+    return $http.post('/auth',username,{
       headers: { 'Content-Type': 'text/plain' }
-    }).then(function(response) {
-
-      console.log("response",response.data);
-
-      return $fauth.signInWithCustomToken(response.data.token).then(()=>{
-        return response.data;
-      }).catch(function(error) {
-        console.error(error);
-      });
-      
-    }).catch(function(e){
-      console.error("Zresponse",e);
-      return e.response;
     });
+    // return axios.post('https://auth.kassa.com.kz',username,{
+    //   headers: { 'Content-Type': 'text/plain' }
+    // }).then(function(response) {
+
+    //   console.log("response",response.data);
+
+    //   return $fauth.signInWithCustomToken(response.data.token).then(()=>{
+    //     return response.data;
+    //   }).catch(function(error) {
+    //     console.error(error);
+    //   });
+
+    // }).catch(function(e){
+    //   console.error("Zresponse",e);
+    //   return e.response;
+    // });
   },
   anonAuth(){
-    $fauth.signInAnonymously().catch(function(error) {
-    });
+    return $http.post('/authAnon',username);
+    // $fauth.signInAnonymously().catch(function(error) {
+    // });
   },
   logout(){
-    $fauth.signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      // An error happened.
-    });
+    return $http.post('/logout',username);
+    // $fauth.signOut().then(function() {
+    //   // Sign-out successful.
+    // }).catch(function(error) {
+    //   // An error happened.
+    // });
   }
 }

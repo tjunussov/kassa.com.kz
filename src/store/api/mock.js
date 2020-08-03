@@ -4,7 +4,7 @@ import MockAdapter from 'axios-mock-adapter'
 
 let mock = new MockAdapter($http,{delayResponse:500})
 mock.onPost('/app/fiscalize').reply((cfg)=>{
-  
+
   var post = JSON.parse(cfg.data)
   // console.log(post);
 
@@ -26,6 +26,21 @@ mock.onPost('/app/fiscalize').reply((cfg)=>{
     return [400,{error:"Превышено время ожидания запроса!"}]
   }
 }).onPost('/app/klik').reply((cfg)=>{
+  var post = JSON.parse(cfg.data)
+  var data = {confirm:((Math.random()*100) > 10), ...post}
+  return [200,data];
+})
+.onPost('/auth').reply((cfg)=>{
+  var post = JSON.parse(cfg.data)
+  var data = {confirm:((Math.random()*100) > 10), ...post}
+  return [200,data];
+})
+.onPost('/authAnon').reply((cfg)=>{
+  var post = JSON.parse(cfg.data)
+  var data = {confirm:((Math.random()*100) > 10), ...post}
+  return [200,data];
+})
+.onPost('/logout').reply((cfg)=>{
   var post = JSON.parse(cfg.data)
   var data = {confirm:((Math.random()*100) > 10), ...post}
   return [200,data];

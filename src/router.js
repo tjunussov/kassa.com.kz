@@ -34,7 +34,7 @@ import SettingsOverview from '@/components/settings/SettingsOverview'
 import MerchantSettings from '@/components/settings/MerchantSettings'
 import KKMSettings from '@/components/settings/KKMSettings'
 import UISettings from '@/components/settings/UISettings'
-import CheckSettings from '@/components/settings/devices/printer/checkSettings'
+import CheckSettings from '@/components/settings/devices/printer/CheckSettings'
 import PaymentPlanSettings from '@/components/settings/PaymentPlanSettings'
 import DeviceSettings from '@/components/settings/devices/printer/PrinterSettings'
 import UserSettings from '@/components/settings/users/UserSettings'
@@ -58,7 +58,7 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    { 
+    {
       path: '/login',
       component: WelcomeLogin,
       meta: { isPublic: true }
@@ -106,72 +106,72 @@ const router = new Router({
           path: '',
           name: 'SettingsOverview',
           component: SettingsOverview,
-          props: true 
+          props: true
         },
         {
           path: 'general',
           name: 'Settings',
           component: Settings,
-          props: true 
+          props: true
         },
         {
           path: 'kkm/:znk',
           component: KKMSettings,
-          props: true 
+          props: true
         },
         {
           path: 'kkm',
           name: 'Kkm',
           component: KKMSettings,
-          props: true 
+          props: true
         },
         {
           path: 'ui',
           name: 'UI',
           component: UISettings,
-          props: true 
+          props: true
         },
         {
           path: 'devices/printer/check',
           name: 'CheckSettings',
           component: CheckSettings,
-          props: true 
+          props: true
         },
         {
           path: 'payments/plan',
           name: 'PaymentPlanSettings',
           component: PaymentPlanSettings,
-          props: true 
+          props: true
         },
         {
           path: 'check',
           name: 'DeviceSettings',
           component: DeviceSettings,
-          props: true 
+          props: true
         },
         {
           path: 'org',
           name: 'MerchantSettings',
           component: MerchantSettings,
-          props: true 
+          props: true
         },
         {
           path: 'users',
           name: 'UserSettings',
           component: UserSettings,
-          props: true 
+          props: true
         },
         {
           path: 'apps',
           name: 'Apps',
           component: Apps,
-          props: true 
+          props: true
         },
         {
           path: 'apps/:name',
           name: 'AppForm',
           component: AppForm,
-          props: true 
+          props: true
         }
       ]
     },
@@ -221,37 +221,37 @@ const router = new Router({
           alias: '',
           name: 'Menu',
           component: FavMenu,
-          props: true 
+          props: true
         },
         {
           path: 'calc',
           name: 'Calculator',
           component: Calculator,
-          props: true 
+          props: true
         },
         {
           path: 'items',
           name: 'Items',
           component: Items,
-          props: true 
+          props: true
         },
         {
           path: 'contact',
           name:'Contacts',
           component: Contacts,
-          props: true 
+          props: true
         },
         {
           path: 'contact/:contact',
           name: 'ContactCard',
           component: Contacts,
-          props: true 
+          props: true
         },
         {
           path: 'tender',
           name: 'Tender',
           component: Tender,
-          props: true 
+          props: true
         },
         { path: 'cart',
           component: CartForm,
@@ -260,31 +260,31 @@ const router = new Router({
               path: ':type',
               name: 'contactForm',
               component: ContactForm,
-              props: true 
+              props: true
             },
             {
               path: ':type',
               name: 'productForm',
               component: ProductForm,
-              props: true 
+              props: true
             },
             {
               path: ':type',
               name: 'resourceForm',
               component: ResourceForm,
-              props: true 
+              props: true
             },
             {
               path: ':type',
               name: 'groupForm',
               component: GroupForm,
-              props: true 
+              props: true
             },
             {
               path: ':type',
               name: 'moneyForm',
               component: MoneyForm,
-              props: true 
+              props: true
             }
           ]
         }
@@ -300,7 +300,7 @@ const router = new Router({
 /*
 // Auth Handling
 router.beforeEach((to, from, next) => {
-  
+
   if (to.matched.every(record => record.meta.isPublic)) {
     next() // make sure to always call next()!
   } else {
@@ -308,7 +308,7 @@ router.beforeEach((to, from, next) => {
     // if not, redirect to login page or Login Modal
     CamundaService.user.checkLoggedIn(this.a.app).then(ok=>{
       ok ? next() : next({path: '/login',query: {redirect:to.fullPath}})
-      // ok ? next() : next('/login')      
+      // ok ? next() : next('/login')
     }).catch(error=>{
       console.error('route error',error);
       next(error)

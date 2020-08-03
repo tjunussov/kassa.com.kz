@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueIdb from 'vue-idb'
 
-import { $fdb } from '@/store/api/firebase'
+// import { $fdb } from '@/store/api/firebase'
 
 // import VueIdb from 'E:\\Dev\\GitHub\\vue-idb-master'
 
@@ -21,7 +21,7 @@ export default new VueIdb({
     { group: 'uuid,name,code_,meta_.parent,type_,meta_.updated' },
     { app: 'name,code_,meta_.parent,type_,meta_.updated' },
 
-    { audit: 'meta_.created, meta_.parent,type_' },    
+    { audit: 'meta_.created, meta_.parent,type_' },
 
     { sales: 'uuid,no,meta_.code,meta_.created,meta_.accounted,meta_.parent,meta_.updated' },
     { items: 'name,type_,sku,meta_.parent,meta_.updated,meta_.favmenu' },
@@ -38,48 +38,48 @@ export default new VueIdb({
     items: { type: 'biglist', primary: 'name', label: 'name',updated_at:'meta_.updated' },
     contacts: { type: 'biglist', primary: 'code_', label: 'code_',updated_at:'meta_.updated' },
   },
-  apis: {
-    sales: {
-      // all: () => LedgerResource.get(),
-      add: (obj) => {
-        console.log('db sync firebase.push',obj);
-        // return new Promise((resolve, reject) => { 
-        //   $fdb.ref('sales/' + obj.uuid).push(obj,()=>{
-        //     resolve({data:obj})
-        //   })
-        // })
-        $fdb.ref('sales/' + obj.uuid).push(obj)
-        return Promise.resolve({data:obj})
-        
-      },
-      update: (obj) => { 
-        $fdb.ref('sales/' + obj.uuid).update(obj)
-        return Promise.resolve({data:obj})
-      },
-      // remove: (id) => LedgerResource.delete(id),
-    },
-    contacts: {
-      // all: () => {
-      //   var contcatRef = $fdb.ref('contacts')
-      //       contcatRef.on('child_added',function(snap) {
-      //         console.log("added:", snap.val);
-      //       })
-      //   return Promise.resolve({data:[]})
-      // },
-      add: (obj) => {
-        $fdb.ref('contacts/' + obj.code_).push(obj)
-        return Promise.resolve({data:obj})
-      },
-      update: (obj) => { 
-        $fdb.ref('contacts/' + obj.code_).update(obj)
-        return Promise.resolve({data:obj})
-      },
-      remove: (obj) => { 
-        $fdb.ref('contacts/' + obj.code_).remove(obj)
-        return Promise.resolve({data:obj})
-      },
-    }
-  }
+  // apis: {
+  //   sales: {
+  //     // all: () => LedgerResource.get(),
+  //     add: (obj) => {
+  //       console.log('db sync firebase.push',obj);
+  //       // return new Promise((resolve, reject) => {
+  //       //   $fdb.ref('sales/' + obj.uuid).push(obj,()=>{
+  //       //     resolve({data:obj})
+  //       //   })
+  //       // })
+  //       $fdb.ref('sales/' + obj.uuid).push(obj)
+  //       return Promise.resolve({data:obj})
+
+  //     },
+  //     update: (obj) => {
+  //       $fdb.ref('sales/' + obj.uuid).update(obj)
+  //       return Promise.resolve({data:obj})
+  //     },
+  //     // remove: (id) => LedgerResource.delete(id),
+  //   },
+  //   contacts: {
+  //     // all: () => {
+  //     //   var contcatRef = $fdb.ref('contacts')
+  //     //       contcatRef.on('child_added',function(snap) {
+  //     //         console.log("added:", snap.val);
+  //     //       })
+  //     //   return Promise.resolve({data:[]})
+  //     // },
+  //     add: (obj) => {
+  //       $fdb.ref('contacts/' + obj.code_).push(obj)
+  //       return Promise.resolve({data:obj})
+  //     },
+  //     update: (obj) => {
+  //       $fdb.ref('contacts/' + obj.code_).update(obj)
+  //       return Promise.resolve({data:obj})
+  //     },
+  //     remove: (obj) => {
+  //       $fdb.ref('contacts/' + obj.code_).remove(obj)
+  //       return Promise.resolve({data:obj})
+  //     },
+  //   }
+  // }
 })
 
 
